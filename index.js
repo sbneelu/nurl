@@ -13,3 +13,5 @@ async function main() {
   if (url !== undefined) location.href = url;
   else document.write("Invalid URL.");
 }
+
+main();
