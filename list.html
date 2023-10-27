@@ -1,26 +1,28 @@
 <script>
-async function fetchUrls() {
-  const res = await fetch("urls.json");
-  return res.json();
-}
-
-async function main() {
-  const table = document.createElement("table");
-  const urls = await fetchUrls();
-  for (const acronym in urls) {
-    const url = urls[acronym];
-    const tr = document.createElement("tr");
-    const td1 = document.createElement("td");
-    const td2 = document.createElement("td);
-    const a = document.createElement("a");
-    td1.innerText = acronym;
-    a.innerText = url;
-    a.href = url;
-    td2.appendChild(a);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    table.appendChild(tr);
+  async function fetchUrls() {
+    const res = await fetch("urls.json");
+    return res.json();
   }
-  document.body.appendChild(table);
-}
+  
+  async function main() {
+    const table = document.createElement("table");
+    const urls = await fetchUrls();
+    for (const acronym in urls) {
+      const url = urls[acronym];
+      const tr = document.createElement("tr");
+      const td1 = document.createElement("td");
+      const td2 = document.createElement("td);
+      const a = document.createElement("a");
+      td1.innerText = acronym;
+      a.innerText = url;
+      a.href = url;
+      td2.appendChild(a);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      table.appendChild(tr);
+    }
+    document.body.appendChild(table);
+  }
+
+  main();
 </script>
