@@ -9,7 +9,7 @@ function lookup(acronym, urls) {
 async function main() {
   const params = Object.fromEntries(new URLSearchParams(location.search));
   const urls = await fetchUrls();
-  const url = urls(params.a, urls);
+  const url = lookup(params.a, urls);
   if (url !== undefined) location.href = url;
   else document.write("Invalid URL.");
 }
