@@ -1,14 +1,15 @@
-const URLS = {
-  example: "https://example.com",
-};
-
-function lookup(acronym) {
-  return acronym in URLS ? URLS[acronym] : undefined;
+async function fetchUrls() {
+  const res = await fetch("urls.json");
+  return res.json();
+}
+function lookup(acronym, urls) {
+  return urls[acronym];
 }
 
-function main() {
+async function main() {
   const params = Object.fromEntries(new URLSearchParams(location.search));
-  const url = lookup(params.a);
+  const urls = await fetchUrls();
+  const url = urls(params.a, urls);
   if (url !== undefined) location.href = url;
   else document.write("Invalid URL.");
 }
